@@ -5,6 +5,31 @@ import sys
 sys.path.insert(0, os.path.abspath(os.pardir))
 
 
+class Mock(object):
+
+    __all__ = []
+
+    def __init__(self, signature, *args, **kwargs):
+        self._signature = signature
+
+    def __repr__(self):
+        return self._signature
+
+    def __call__(self, *args, **kwargs):
+        return Mock('%s()' % (self._signature,))
+
+    def __getattr__(self, name):
+        if name in ('__file__', '__path__'):
+            return '/dev/null'
+        else:
+            return Mock('%s.%s' % (self._signature, name))
+
+
+MOCK_MODULES = ['maya']
+for module in MOCK_MODULES:
+    sys.modules[module] = Mock(module)
+
+
 import revl
 
 
