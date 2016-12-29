@@ -1,0 +1,7 @@
+include CHANGES
+include LICENSE
+include README.rst
+
+recursive-include benchmarks *
+recursive-include doc *
+recursive-include tests *

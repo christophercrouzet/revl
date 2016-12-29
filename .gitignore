@@ -1,0 +1,15 @@
+._*
+.DS_Store
+
+__pycache__/
+build/
+dist/
+env/
+sdist/
+wheels/
+*.egg-info/
+*.egg
+*.lprof
+*.py[co]
+
+*.sublime-*
