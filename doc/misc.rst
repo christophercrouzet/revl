@@ -15,7 +15,7 @@ Miscellaneous
    pickTransform
 
 
-.. data:: NULL_OBJ
+.. autodata:: NULL_OBJ
 
    Constant denoting an invalid object.
 
