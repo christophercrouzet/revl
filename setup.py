@@ -25,7 +25,7 @@ setuptools.setup(
     keywords='Autodesk Maya API benchmark test',
     license='MIT',
     url='https://github.com/christophercrouzet/revl',
-    author='Christopher Crouzet',
+    author="Christopher Crouzet",
     author_email='christopher.crouzet@gmail.com',
     classifiers=[
         'Development Status :: 4 - Beta',

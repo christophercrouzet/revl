@@ -50,8 +50,8 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 project = u'revl'
-copyright = u'2016, Christopher Crouzet'
-author = u'Christopher Crouzet'
+copyright = u"2016, Christopher Crouzet"
+author = u"Christopher Crouzet"
 version = revl.__version__
 release = version
 language = None
@@ -89,15 +89,15 @@ latex_elements = {
 }
 
 latex_documents = [
-    (master_doc, 'revl.tex', u'revl Documentation',
-     u'Christopher Crouzet', 'manual'),
+    (master_doc, 'revl.tex', u"revl Documentation",
+     u"Christopher Crouzet", 'manual'),
 ]
 
 
 # -- Options for manual page output ---------------------------------------
 
 man_pages = [
-    (master_doc, 'revl', u'revl Documentation',
+    (master_doc, 'revl', u"revl Documentation",
      [author], 1)
 ]
 
@@ -105,7 +105,7 @@ man_pages = [
 # -- Options for Texinfo output -------------------------------------------
 
 texinfo_documents = [
-    (master_doc, 'revl', u'revl Documentation',
-     author, 'revl', "Helps to benchmark code for Autodesk Maya.",
+    (master_doc, 'revl', u"revl Documentation", author, 'revl',
+     "Helps to benchmark code for Autodesk Maya.",
      'Miscellaneous'),
 ]
