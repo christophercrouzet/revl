@@ -76,6 +76,23 @@ This command will run all the tests within the ``TestCase`` class as well as
 the individual tests which contains ``test_my_code`` in their name.
 
 
+Running the Benchmarks
+----------------------
+
+This works similarly to the test cases:
+
+.. code-block:: bash
+
+   $ mayapy benchmarks/run.py
+
+
+Here again, specific benchmarks can be run by directly passing their names:
+
+.. code-block:: bash
+
+   $ mayapy benchmarks/run.py bench_my_code
+
+
 Get the Source
 --------------
 
