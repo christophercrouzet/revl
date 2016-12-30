@@ -240,11 +240,6 @@ def _defineCurveTraits(type, outPlugs=None):
                             outPlugs=outPlugs, inPlug='create')
 
 
-def _defineImplicitTraits(type):
-    return _PrimitiveTraits(type=type, shapeType='nurbsCurve',
-                            outPlugs=['out'], inPlug='create')
-
-
 def _defineMeshTraits(type):
     return _PrimitiveTraits(type=type, shapeType='mesh', outPlugs=['output'],
                             inPlug='inMesh')
