@@ -84,9 +84,9 @@ The 100 transform nodes are now randomly parented under other transforms. The
    >>> revl.run(commands, 100)
 
 
-Revl is running here a total of 100 command evaluations inequally shared
-between the three distinct commands provided, leading the resulting scene to
-contain approximatively 12.5% of cones, 25% of cubes, and 62.5% of spheres.
+Revl is invoking here a total of 100 evaluations inequally shared between the
+three distinct commands provided, leading the resulting scene to contain
+approximatively 12.5% of cones, 25% of cubes, and 62.5% of spheres.
 
 
 .. _write_command:
