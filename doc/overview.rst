@@ -18,13 +18,18 @@ code can be observed.
 
 The pseudo-random nature of the process can also help revealing potential bugs
 by exposing edge cases that were not thought of, thus making it also a good
-tool for unit testing.
+tool for unit testing. See `Wikipedia's Fuzzing page`_.
 
 Note that Revl does not provide any sort of profiling tool to measure
-performances. The built-in ``timeit`` module as well as other open-source
+performances. The built-in |timeit|_ module as well as other open-source
 packages can be used for this purpose.
 
 .. seealso::
 
    A description of the usage of Revl as well as a few examples are available
    in the :ref:`tutorial` section.
+
+
+.. _Wikipedia's Fuzzing page: https://en.wikipedia.org/wiki/Fuzzing
+.. |timeit| replace:: ``timeit``
+.. _timeit: https://docs.python.org/library/timeit.html

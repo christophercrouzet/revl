@@ -14,10 +14,10 @@ code can be observed.
 
 The pseudo-random nature of the process can also help revealing potential bugs
 by exposing edge cases that were not thought of, thus making it also a good
-tool for unit testing.
+tool for unit testing. See `Wikipedia's Fuzzing page`_.
 
 Note that Revl does not provide any sort of profiling tool to measure
-performances. The built-in ``timeit`` module as well as other open-source
+performances. The built-in |timeit|_ module as well as other open-source
 packages can be used for this purpose.
 
 
@@ -28,6 +28,7 @@ Features
 * fine control over the probability distribution for each command.
 * scene generations are reproducible using a fixed seed.
 * extensible with custom commands.
+* allows for fuzz testing.
 * fast (using Maya's API, not the command layer).
 
 
@@ -124,4 +125,7 @@ Christopher Crouzet
 <`christophercrouzet.com <http://christophercrouzet.com>`_>
 
 
+.. _Wikipedia's Fuzzing page: https://en.wikipedia.org/wiki/Fuzzing
+.. |timeit| replace:: ``timeit``
+.. _timeit: https://docs.python.org/library/timeit.html
 .. _GitHub project page: https://github.com/christophercrouzet/revl
