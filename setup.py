@@ -27,6 +27,7 @@ setuptools.setup(
     name='revl',
     version=findVersion('revl.py'),
     description="Helps to benchmark code for Autodesk Maya",
+    long_description=read('README.rst'),
     keywords='Autodesk Maya API benchmark test',
     license='MIT',
     url='https://github.com/christophercrouzet/revl',
