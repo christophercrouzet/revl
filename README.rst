@@ -16,11 +16,9 @@ The pseudo-random nature of the process can also help revealing potential bugs
 by exposing edge cases that were not thought of, thus making it also a good
 tool for unit testing.
 
-.. note::
-
-   Revl does not provide any sort of profiling tool to measure performances.
-   The built-in ``timeit`` module as well as other open-source packages can be
-   used for this purpose.
+Note that Revl does not provide any sort of profiling tool to measure
+performances. The built-in ``timeit`` module as well as other open-source
+packages can be used for this purpose.
 
 
 Features
