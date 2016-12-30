@@ -34,12 +34,18 @@ Usage
 
    >>> import revl
    >>> commands = [
-   ...     (2.0, revl.createTransform,),
+   ...     (4.0, revl.createTransform,),
    ...     (1.0, revl.createPrimitive, (), {'parent': True})
    ... ]
    >>> count = 100
    >>> revl.run(commands, count, seed=1.23)
 
+
+In this example, Revl is invoking a total of 100 evaluations inequally shared
+between the two distinct commands provided, leading to create approximatively
+80% of transforms, and 20% of primitives (also including a transform for each).
+Also, the primitive type is picked randomly, and they are randomly parented
+under other transforms, possibly creating a scene with a deep DAG hierarchy.
 
 See the ``tutorial`` section from the documentation for more examples.
 
