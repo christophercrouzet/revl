@@ -134,7 +134,7 @@ class Command(_Command):
 
 
 _COMMAND_ATTR_COUNT = len(Command._fields)
-_COMMAND_REQUIRED_ARG_RANGE = range(
+_COMMAND_REQUIRED_ARG_RANGE = _range(
     _COMMAND_ATTR_COUNT - len(Command.__new__.__defaults__),
     _COMMAND_ATTR_COUNT + 1
 )
