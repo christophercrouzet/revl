@@ -1,16 +1,21 @@
-import codecs
+import io
 import os
 import re
 import setuptools
 
 
+def read(*names, **kwargs):
+    # Credits: https://packaging.python.org/single_source_version.
+    here = os.path.dirname(__file__)
+    encoding = kwargs.get('encoding', 'utf8')
+    with io.open(os.path.join(here, *names), encoding=encoding) as fp:
+        return fp.read()
+
+
 def findVersion(*filePaths):
     # Credits: https://packaging.python.org/single_source_version.
-    here = os.path.abspath(os.path.dirname(__file__))
-    with codecs.open(os.path.join(here, *filePaths), 'r', 'utf8') as f:
-        versionFile = f.read()
-
-    versionMatch = re.search(r'^__version__ = [\'"]([^\'"]*)[\'"]',
+    versionFile = read(*filePaths)
+    versionMatch = re.search(r"^__version__ = ['\"]([^'\"]*)['\"]",
                              versionFile, re.M)
     if versionMatch:
         return versionMatch.group(1)
