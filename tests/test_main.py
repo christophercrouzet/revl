@@ -46,13 +46,15 @@ class MainTest(unittest.TestCase):
         self.assertEqual(context.extra, 'extra')
         self.assertEqual(context.user, 'user')
         self.assertEqual(context.data, 'data')
+        self.assertEqual(repr(context), "Context(dag=%r, data='data', dg=%r, extra='extra', transforms=[], user='user')" % (context.dag, context.dg))
 
     def testRun1(self):
         commands = [
             (1.0, incrementA,),
             (1.0, incrementB,),
         ]
-        revl.run(commands, 123)
+        context = revl.run(commands, 123)
+        self.assertIsInstance(context, revl.Context)
         self.assertTrue(globalA > 0)
         self.assertTrue(globalB > 0)
         self.assertEqual(globalA + globalB, 123)
@@ -62,7 +64,8 @@ class MainTest(unittest.TestCase):
             (1.0, incrementA,),
             (0.0, incrementB,),
         ]
-        revl.run(commands, 123)
+        context = revl.run(commands, 123)
+        self.assertIsInstance(context, revl.Context)
         self.assertEqual(globalA, 123)
         self.assertEqual(globalB, 0)
 
@@ -71,7 +74,8 @@ class MainTest(unittest.TestCase):
             (2.0, incrementA,),
             (1.0, incrementB,),
         ]
-        revl.run(commands, 123)
+        context = revl.run(commands, 123)
+        self.assertIsInstance(context, revl.Context)
         self.assertTrue(globalA > 0)
         self.assertTrue(globalB > 0)
         self.assertTrue(globalA > globalB)
@@ -88,12 +92,29 @@ class MainTest(unittest.TestCase):
         for _ in range(123):
             globalA = 0
             globalB = 0
-            revl.run(commands, 123, seed=1.23)
+            context = revl.run(commands, 123, seed=1.23)
+            self.assertIsInstance(context, revl.Context)
             aValues.append(globalA)
             bValues.append(globalB)
 
         self.assertTrue(all(a == globalA for a in aValues))
         self.assertTrue(all(b == globalB for b in bValues))
+
+    def testRun5(self):
+        context = revl.run([], 123)
+        self.assertIsInstance(context, revl.Context)
+
+    def testRun6(self):
+        context = revl.run([], 123, context=revl.Context())
+        self.assertIsInstance(context, revl.Context)
+
+    def testRun7(self):
+        commands = [
+            (0, incrementA,),
+            (-1.23, incrementB,),
+        ]
+        context = revl.run(commands, 123)
+        self.assertIsInstance(context, revl.Context)
 
     def testErrorMessages(self):
         def dummy(context):
@@ -513,7 +534,7 @@ class MainTest(unittest.TestCase):
 
             self.assertEqual(dagPath.length(), depth)
 
-    def testUnparent(self):
+    def testUnparent1(self):
         context = revl.Context()
 
         oRoot = revl.createTransform(context)
@@ -528,6 +549,14 @@ class MainTest(unittest.TestCase):
         dagPath = OpenMaya.MDagPath()
         OpenMaya.MDagPath.getAPathTo(oTransform, dagPath)
         self.assertEqual(dagPath.length(), 1)
+
+    def testUnparent2(self):
+        context = revl.Context()
+
+        revl.unparent(context)
+
+        context.dag.doIt()
+        context.dg.doIt()
 
     def testCustomCommand(self):
         def createTemplatedPrimitive(context, type=None, name=None,
