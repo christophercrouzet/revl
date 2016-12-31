@@ -93,7 +93,7 @@ Tests are available in the ``tests`` directory and can be fired through the
    $ mayapy tests/run.py
 
 
-It is also possible to run specific tests by passinga space-separated list of
+It is also possible to run specific tests by passing a space-separated list of
 partial names to match:
 
 .. code-block:: bash
