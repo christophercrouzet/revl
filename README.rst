@@ -71,7 +71,7 @@ See the ``tutorial`` section from the documentation for more examples.
 Documentation
 -------------
 
-Read the documentation online at <http://revl.readthedocs.io> or check
+Read the documentation online at <https://revl.readthedocs.io> or check
 their source from the ``doc`` folder.
 
 The documentation can be built in different formats using Sphinx.
@@ -135,7 +135,7 @@ Author
 ------
 
 Christopher Crouzet
-<`christophercrouzet.com <http://christophercrouzet.com>`_>
+<`christophercrouzet.com <https://christophercrouzet.com>`_>
 
 
 .. _Wikipedia's Fuzzing page: https://en.wikipedia.org/wiki/Fuzzing

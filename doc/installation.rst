@@ -61,10 +61,10 @@ Installing pip
 .. [1] See the `Python Packaging User Guide`_
 
 
-.. _Git: http://git-scm.com/
+.. _Git: https://git-scm.com
 .. _GitHub: https://github.com/christophercrouzet/revl
 .. _PyPI: https://pypi.python.org/pypi/revl
-.. _Python Packaging User Guide: http://python-packaging-user-guide.readthedocs.io
+.. _Python Packaging User Guide: https://python-packaging-user-guide.readthedocs.io
 .. _easy_install: http://peak.telecommunity.com/DevCenter/EasyInstall
 .. _get-pip.py: https://raw.github.com/pypa/pip/master/contrib/get-pip.py
 .. _pip: https://pypi.python.org/pypi/pip
