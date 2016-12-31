@@ -655,9 +655,6 @@ def _joinSequence(seq, lastSeparator=''):
                 if count > 1 and index == count - 1
                 else "'%s'" % (item,))
 
-    if not isinstance(seq, _SEQUENCE_TYPES):
-        seq = (seq,)
-
     count = len(seq)
     return ', '.join(format(item, count, i) for i, item in enumerate(seq))
 
@@ -678,8 +675,5 @@ def _joinTypes(seq, lastSeparator=''):
     str
         The joined class object names.
     """
-    if not isinstance(seq, _SEQUENCE_TYPES):
-        seq = (seq,)
-
     classNames = [_formatType(cls) for cls in seq]
     return _joinSequence(classNames, lastSeparator)
