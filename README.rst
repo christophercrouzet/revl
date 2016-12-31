@@ -123,4 +123,3 @@ Christopher Crouzet
 .. _timeit: https://docs.python.org/library/timeit.html
 .. _Tutorial: https://revl.readthedocs.io/en/latest/tutorial.html
 .. _Installation: https://revl.readthedocs.io/en/latest/installation.html
-.. _GitHub project page: https://github.com/christophercrouzet/revl
