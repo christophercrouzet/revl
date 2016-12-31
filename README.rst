@@ -65,70 +65,50 @@ between the two distinct commands provided, leading to create approximatively
 Also, the primitive type is picked randomly, and they are randomly parented
 under other transforms, possibly creating a scene with a deep DAG hierarchy.
 
-See the ``tutorial`` section from the documentation for more examples.
+See the `Tutorial`_ section from the documentation for more information and
+examples on using Revl.
+
+
+Installation
+------------
+
+See the `Installation`_ section from the documentation.
 
 
 Documentation
 -------------
 
-Read the documentation online at <https://revl.readthedocs.io> or check
-their source from the ``doc`` folder.
-
-The documentation can be built in different formats using Sphinx.
+Read the documentation online at <https://revl.readthedocs.io> or check its
+source in the ``doc`` directory.
 
 
 Running the Tests
 -----------------
 
-A suite of unit tests is available from the ``tests`` directory. You can run it
-by firing:
+Tests are available in the ``tests`` directory and can be fired through the
+``run.py`` file:
 
 .. code-block:: bash
 
    $ mayapy tests/run.py
 
 
-To run specific tests, it is possible to pass names to match in the command
-line.
+It is also possible to run specific tests by passinga space-separated list of
+partial names to match:
 
 .. code-block:: bash
 
-   $ mayapy tests/run.py TestCase test_my_code
+   $ mayapy tests/run.py TestClass
 
 
-This command will run all the tests within the ``TestCase`` class as well as
-the individual tests which contains ``test_my_code`` in their name.
+Finally, each test file is standalone and can be directly executed.
 
 
 Running the Benchmarks
 ----------------------
 
-This works similarly to the test cases:
-
-.. code-block:: bash
-
-   $ mayapy benchmarks/run.py
-
-
-Here again, specific benchmarks can be run by directly passing their names:
-
-.. code-block:: bash
-
-   $ mayapy benchmarks/run.py bench_my_code
-
-
-Get the Source
---------------
-
-The source code is available from the `GitHub project page`_.
-
-
-Contributing
-------------
-
-Found a bug or got a feature request? Don't keep it for yourself, log a new
-issue on
-`GitHub <https://github.com/christophercrouzet/revl/issues>`_.
+Benchmarks are available in the ``benchmarks`` directory and can be fired in
+the same way as described above for the tests.
 
 
 Author
@@ -141,4 +121,6 @@ Christopher Crouzet
 .. _Wikipedia's Fuzzing page: https://en.wikipedia.org/wiki/Fuzzing
 .. |timeit| replace:: ``timeit``
 .. _timeit: https://docs.python.org/library/timeit.html
+.. _Tutorial: https://revl.readthedocs.io/en/latest/tutorial.html
+.. _Installation: https://revl.readthedocs.io/en/latest/installation.html
 .. _GitHub project page: https://github.com/christophercrouzet/revl
