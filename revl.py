@@ -523,20 +523,20 @@ def _check(commands):
     if not isinstance(commands, _SEQUENCE_TYPES):
         raise TypeError(
             "The command set is expected to be an instance object of type %s, "
-            "not %s." % (_joinTypes(_SEQUENCE_TYPES, "or "),
-                         _joinTypes(type(commands)),))
+            "not '%s'." % (_joinTypes(_SEQUENCE_TYPES, "or "),
+                           _formatType(type(commands)),))
 
     # Check the overall shape of each command.
     for command in commands:
         if not isinstance(command, tuple):
             raise TypeError(
-                "Each command is expected to be a tuple but got %s instead."
-                % (_joinTypes(type(command)),))
+                "Each command is expected to be a tuple but got '%s' instead."
+                % (_formatType(type(command)),))
 
         if len(command) not in _COMMAND_REQUIRED_ARG_RANGE:
             raise TypeError(
-                "Each command is expected to be a tuple compatible with %s "
-                "but got '%s' instead." % (_joinTypes(Command), command))
+                "Each command is expected to be a tuple compatible with '%s' "
+                "but got '%s' instead." % (_formatType(Command), command))
 
     # Check each command attribute.
     for command in commands:
@@ -544,31 +544,31 @@ def _check(commands):
         if not isinstance(command.weight, numbers.Real):
             raise TypeError(
                 "The first element of a command, that is the 'weight' "
-                "attribute, is expected to be a real number, not %s."
-                % (_joinTypes(type(command.weight))))
+                "attribute, is expected to be a real number, not '%s'."
+                % (_formatType(type(command.weight))))
 
         if not callable(command.function):
             raise TypeError(
                 "The second element of a command, that is the 'function' "
-                "attribute, is expected to be a callable object, not %s."
-                % (_joinTypes(type(command.function))))
+                "attribute, is expected to be a callable object, not '%s'."
+                % (_formatType(type(command.function))))
 
         if (command.args is not None
                 and not isinstance(command.args, _SEQUENCE_TYPES)):
             raise TypeError(
                 "The third element of a command, that is the 'args' "
                 "attribute, is expected to be an instance object of type %s, "
-                "not %s."
+                "not '%s'."
                 % (_joinTypes(_SEQUENCE_TYPES + (type(None),), "or "),
-                   _joinTypes(type(command.args))))
+                   _formatType(type(command.args))))
 
         if (command.kwargs is not None
                 and not isinstance(command.kwargs, dict)):
             raise TypeError(
                 "The fourth element of a command, that is the 'kwargs' "
                 "attribute, is expected to be an instance object of type "
-                "'dict', or 'NoneType', not %s."
-                % (_joinTypes(type(command.kwargs))))
+                "'dict', or 'NoneType', not '%s'."
+                % (_formatType(type(command.kwargs))))
 
 
 def _consolidate(commands):
@@ -613,6 +613,25 @@ def _pick(commands, count):
             if v >= r:
                 yield command
                 break
+
+
+def _formatType(cls):
+    """Format a type name for printing.
+
+    Parameters
+    ----------
+    cls : type
+        Class object.
+
+    Returns
+    -------
+    str
+        The formatted class object name.
+    """
+    if cls.__module__ == _BUILTIN_MODULE:
+        return cls.__name__
+    else:
+        return '%s.%s' % (cls.__module__, cls.__name__)
 
 
 def _joinSequence(seq, lastSeparator=''):
@@ -662,7 +681,5 @@ def _joinTypes(seq, lastSeparator=''):
     if not isinstance(seq, _SEQUENCE_TYPES):
         seq = (seq,)
 
-    classNames = ['%s.%s' % (cls.__module__, cls.__name__)
-                  if cls.__module__ != _BUILTIN_MODULE else cls.__name__
-                  for cls in seq]
+    classNames = [_formatType(cls) for cls in seq]
     return _joinSequence(classNames, lastSeparator)
