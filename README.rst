@@ -8,9 +8,9 @@ performs under different conditions, such as within scenes that are large or
 small, that define a deep DAG hiearchy or a flat one, that use many node types
 or only a few, and so on.
 
-Following sets of user-provided commands, Revl can pseudo-randomly generate
-Maya scenes with different properties against which the behaviour of a piece of
-code can be observed.
+Following sets of user-provided commands, Revl can **pseudo-randomly generate
+Maya scenes** with different properties against which the behaviour of a piece
+of code can be observed.
 
 The pseudo-random nature of the process can also help revealing potential bugs
 by exposing edge cases that were not thought of, thus making it also a good
