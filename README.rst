@@ -6,7 +6,7 @@ Revl
    :alt: PyPI latest version
 
 .. image:: https://readthedocs.org/projects/revl/badge/?version=latest
-   :target: https://revl.readthedocs.org
+   :target: https://revl.readthedocs.io
    :alt: Documentation status
 
 .. image:: https://img.shields.io/pypi/l/revl.svg
@@ -71,7 +71,7 @@ See the ``tutorial`` section from the documentation for more examples.
 Documentation
 -------------
 
-Read the documentation online at <http://revl.readthedocs.org> or check
+Read the documentation online at <http://revl.readthedocs.io> or check
 their source from the ``doc`` folder.
 
 The documentation can be built in different formats using Sphinx.
