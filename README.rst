@@ -1,6 +1,19 @@
 Revl
 ====
 
+.. image:: https://img.shields.io/pypi/v/revl.svg
+   :target: https://pypi.python.org/pypi/revl
+   :alt: PyPI latest version
+
+.. image:: https://readthedocs.org/projects/revl/badge/?version=latest
+   :target: https://revl.readthedocs.org
+   :alt: Documentation status
+
+.. image:: https://img.shields.io/pypi/l/revl.svg
+   :target: https://pypi.python.org/pypi/revl
+   :alt: License
+
+
 Revl helps to benchmark code for Autodesk Maya.
 
 Upon writing a piece of code for Maya, it might be interesting to know how it
