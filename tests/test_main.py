@@ -552,7 +552,8 @@ class MainTest(unittest.TestCase):
         context.dag.doIt()
         context.dg.doIt()
 
-        self.assertTrue(all(OpenMaya.MFnDependencyNode(shape).findPlug('template').asBool() == True for shape in primitive.shapes))
+        self.assertTrue(all(OpenMaya.MFnDependencyNode(shape).findPlug('template').asBool() for shape in primitive.shapes))
+
 
 if __name__ == '__main__':
     unittest.main(verbosity=2)
