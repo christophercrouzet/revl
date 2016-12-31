@@ -14,7 +14,7 @@ Revl
    :alt: License
 
 
-Revl helps to benchmark code for Autodesk Maya.
+Revl is a library that helps to benchmark code for Autodesk Maya.
 
 Upon writing a piece of code for Maya, it might be interesting to know how it
 performs under different conditions, such as within scenes that are large or
