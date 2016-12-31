@@ -84,16 +84,6 @@ class Context(object):
                             for k, v in sorted(_iteritems(self.__dict__))])
         return "%s(%s)" % (self.__class__.__name__, values)
 
-    def __eq__(self, other):
-        if isinstance(other, self.__class__):
-            return self.__dict__ == other.__dict__
-
-        return NotImplemented
-
-    def __ne__(self, other):
-        is_equal = self.__eq__(other)
-        return is_equal if is_equal is NotImplemented else not is_equal
-
 
 _Command = collections.namedtuple(
     'Command', (
