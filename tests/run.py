@@ -24,7 +24,12 @@ def _findTests(path, selectors=None):
                        for selector in selectors)
 
     out = []
-    stack = collections.deque((unittest.TestLoader().discover(path),))
+    if path == '__main__':
+        rootTest = unittest.TestLoader().loadTestsFromModule(sys.modules[path])
+    else:
+        rootTest = unittest.TestLoader().discover(path)
+
+    stack = collections.deque((rootTest,))
     while stack:
         test = stack.popleft()
         if isinstance(test, unittest.TestSuite):

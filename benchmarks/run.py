@@ -79,8 +79,12 @@ def _findBenchs(path, selectors=None):
                        for selector in selectors)
 
     out = []
-    stack = collections.deque(
-        (BenchLoader().discover(path, pattern='bench*.py'),))
+    if path == '__main__':
+        rootBench = BenchLoader().loadTestsFromModule(sys.modules[path])
+    else:
+        rootBench = BenchLoader().discover(path, pattern='bench*.py')
+
+    stack = collections.deque((rootBench,))
     while stack:
         obj = stack.popleft()
         if isinstance(obj, unittest.TestSuite):
