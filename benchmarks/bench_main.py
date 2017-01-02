@@ -15,9 +15,6 @@ from maya import OpenMaya
 
 import revl
 
-from benchmarks._loader import BenchLoader
-from benchmarks._runner import BenchRunner
-
 
 class MainBench(unittest.TestCase):
 
@@ -72,4 +69,5 @@ class MainBench(unittest.TestCase):
 
 
 if __name__ == '__main__':
-    unittest.main(testLoader=BenchLoader(), testRunner=BenchRunner)
+    from benchmarks.run import run
+    run('__main__')
