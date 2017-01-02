@@ -1,11 +1,17 @@
 #!/usr/bin/env mayapy
 
+import argparse
 import collections
-import optparse
 import os
-import subprocess
 import sys
 import unittest
+
+
+# Usage's syntax based on docopt.
+_USAGE = "%(prog)s [<name>...]"
+_DESCRIPTION = """\
+Runs the tests that have their name containing either one of the 'name'
+arguments passed. If no 'name' argument is passed, all the tests are run."""
 
 
 def _findTests(path, selectors=None):
@@ -20,17 +26,17 @@ def _findTests(path, selectors=None):
     out = []
     stack = collections.deque((unittest.TestLoader().discover(path),))
     while stack:
-        obj = stack.popleft()
-        if isinstance(obj, unittest.TestSuite):
-            stack.extend(test for test in obj)
-        elif type(obj).__name__ == 'ModuleImportFailure':
+        test = stack.popleft()
+        if isinstance(test, unittest.TestSuite):
+            stack.extend(case for case in test)
+        elif type(test).__name__ == 'ModuleImportFailure':
             try:
                 # This should always throw an ImportError exception.
-                getattr(obj, _getTestName(obj))()
+                getattr(test, _getTestName(test))()
             except ImportError as e:
                 sys.exit(e.message.strip())
-        elif filter(obj):
-            out.append(obj)
+        elif filter(test):
+            out.append(test)
 
     return out
 
@@ -44,32 +50,16 @@ def _getTestFullName(test):
                          _getTestName(test))
 
 
-def main():
-    usage = "usage: %prog [options] [test1..testN]"
-    parser = optparse.OptionParser(usage=usage)
-    parser.add_option(
-        '-s', '--split', action='store_true', dest='split',
-        help="run each test in a separate subprocess"
-    )
-
-    (options, args) = parser.parse_args()
-
-    here = os.path.abspath(os.path.dirname(__file__))
-    rootPath = os.path.abspath(os.path.join(here, os.pardir))
-    sys.path.insert(0, rootPath)
-
-    selectors = args if args else None
-    tests = _findTests(here, selectors)
-
-    if options.split:
-        for test in tests:
-            name = _getTestFullName(test)
-            subprocess.call([sys.executable, '-m', 'unittest', '-v', name],
-                            env={'PYTHONPATH': ':'.join(sys.path)})
-    else:
-        suite = unittest.TestLoader().suiteClass(tests)
-        unittest.TextTestRunner(verbosity=2).run(suite)
+def run(startPath, verbosity=2):
+    parser = argparse.ArgumentParser(usage=_USAGE, description=_DESCRIPTION)
+    parser.add_argument('name', nargs='*',
+                        help='partial test names to search')
+    args = parser.parse_args()
+    selectors = args.name if args.name else None
+    tests = _findTests(startPath, selectors)
+    suite = unittest.TestLoader().suiteClass(tests)
+    unittest.TextTestRunner(verbosity=verbosity).run(suite)
 
 
 if __name__ == "__main__":
-    main()
+    run(os.path.abspath(os.path.dirname(__file__)))
