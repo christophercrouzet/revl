@@ -1,9 +1,6 @@
 PYTHON = mayapy
 
 
-bench:
-	@$(PYTHON) benchmarks/run.py
-
 clean:
 	@find . \( \
 		-type d -name "__pycache__" \
@@ -21,7 +18,8 @@ clean:
 	@rm -rf doc/_build/*
 
 coverage:
-	@$(PYTHON) -m coverage run --branch --source revl tests/run.py
+	@$(PYTHON) -m coverage run --branch --source revl \
+		-m unittest discover -s tests
 	@coverage report
 	@coverage html
 
@@ -35,9 +33,9 @@ env:
 	virtualenv env
 
 test:
-	@$(PYTHON) tests/run.py
+	@$(PYTHON) -m unittest discover -s tests -v
 
 upload:
 	@twine upload dist/*
 
-.PHONY: bench clean coverage dist doc env test upload
+.PHONY: clean coverage dist doc env test upload
