@@ -18,10 +18,11 @@ _clock = timeit.default_timer
 
 # Usage's syntax based on docopt.
 _USAGE = "%(prog)s [<name>...]"
-_DESCRIPTION = """\
-Runs the benchmarks that have their name containing either one of the 'name'
-arguments passed. If no 'name' argument is passed, all the benchmarks are
-run."""
+_DESCRIPTION = (
+    "Runs the benchmarks that have their name containing either one of the "
+    "'name' arguments passed. If no 'name' argument is passed, all the "
+    "benchmarks are run."
+)
 
 
 class DummyResult(object):
