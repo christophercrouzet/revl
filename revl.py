@@ -10,7 +10,7 @@
 
     Helps to benchmark code for Autodesk Maya.
 
-    :copyright: Copyright 2016 by Christopher Crouzet.
+    :copyright: Copyright 2016-2017 by Christopher Crouzet.
     :license: MIT, see LICENSE for details.
 """
 
