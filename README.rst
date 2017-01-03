@@ -14,7 +14,7 @@ Revl
    :alt: License
 
 
-Revl is a library that helps to benchmark code for `Autodesk Maya`_.
+Revl is a Python library that helps to benchmark code for `Autodesk Maya`_.
 
 Upon writing a piece of code for Maya, it might be interesting to know how it
 performs under different conditions, such as within scenes that are large or
