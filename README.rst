@@ -73,8 +73,8 @@ and explanations on how to use Revl.
 Documentation
 -------------
 
-Read the documentation online at <https://revl.readthedocs.io> or check its
-source in the ``doc`` directory.
+Read the documentation online at `revl.readthedocs.io`_ or check its source in
+the ``doc`` directory.
 
 
 Author
@@ -87,6 +87,7 @@ Christopher Crouzet
 .. |timeit| replace:: ``timeit``
 
 .. _Autodesk Maya: http://www.autodesk.com/products/maya
+.. _revl.readthedocs.io: https://revl.readthedocs.io
 .. _timeit: https://docs.python.org/library/timeit.html
 .. _Tutorial: https://revl.readthedocs.io/en/latest/tutorial.html
 .. _Wikipedia's Fuzzing page: https://en.wikipedia.org/wiki/Fuzzing
