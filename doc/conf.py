@@ -82,6 +82,7 @@ html_theme_options = {
     'description': html_description,
     'github_user': 'christophercrouzet',
     'github_repo': 'revl',
+    'github_type': 'star',
     'fixed_sidebar': True,
 }
 html_sidebars = {
