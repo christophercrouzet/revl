@@ -15,12 +15,22 @@ Command Functions
    unparent
 
 
+----
+
 .. autofunction:: createDagNode
+
+----
 
 .. autofunction:: createDgNode
 
+----
+
 .. autofunction:: createPrimitive
 
+----
+
 .. autofunction:: createTransform
+
+----
 
 .. autofunction:: unparent

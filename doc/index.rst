@@ -1,11 +1,19 @@
-Documentation Overview
-======================
+Revl's Documentation
+====================
 
-Welcome to the documentation of Revl v\ |version|.
+Welcome! If you are just getting started, a recommended first read is the
+:ref:`overview` as it shortly covers the *why*, *what*, and *how*'s of this
+library. From there, the :ref:`installation` then the :ref:`tutorial` sections
+should get you up to speed with the basics required to use it.
+
+Looking how to use a specific function, class, or method? The whole public
+interface is described in the :ref:`reference` section.
+
+Please report bugs and suggestions on `GitHub`_.
 
 
-Getting Started
----------------
+User's Guide
+------------
 
 .. toctree::
    :maxdepth: 2
@@ -13,35 +21,32 @@ Getting Started
    overview
    installation
    tutorial
+   reference
 
 
-Diving into the Code
---------------------
+Developer's Guide
+-----------------
 
 .. toctree::
    :maxdepth: 2
 
-   reference
+   tests
 
 
 Additional Information
 ----------------------
 
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 2
 
-   contributing
    changelog
    versioning
    license
 
 
-Indices
--------
-
-* :ref:`genindex`
-
-
 .. testsetup::
 
    import revl
+
+
+.. _GitHub: https://github.com/christophercrouzet/revl

@@ -2,10 +2,13 @@
 
 .. _reference:
 
-Reference
-=========
+API Reference
+=============
 
-The whole content of the library is contained within the only module ``revl``.
+The whole public interface of Revl is described here.
+
+All of the library's content is accessible from within the only module
+``revl``.
 
 
 .. toctree::
@@ -14,9 +17,3 @@ The whole content of the library is contained within the only module ``revl``.
    command_evaluation
    command_functions
    misc
-
-
-.. seealso::
-
-   A description of the usage of Revl as well as a few examples are available
-   in the :ref:`tutorial` section.

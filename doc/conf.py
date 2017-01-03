@@ -30,6 +30,8 @@ for module in MOCK_MODULES:
     sys.modules[module] = Mock(module)
 
 
+from datetime import datetime
+
 import revl
 
 
@@ -50,7 +52,7 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 project = u'revl'
-copyright = u"2016, Christopher Crouzet"
+copyright = u"2016-%i, Christopher Crouzet" % (datetime.utcnow().year,)
 author = u"Christopher Crouzet"
 version = revl.__version__
 release = version
@@ -64,17 +66,34 @@ pygments_style = 'sphinx'
 show_authors = False
 todo_include_todos = False
 
+description = (
+    "A Python library that helps to benchmark code for Autodesk Maya."
+)
+
 
 # -- Options for HTML output ----------------------------------------------
 
-if os.environ.get('READTHEDOCS', None) != 'True':
-    try:
-        import sphinx_rtd_theme
-        html_theme = 'sphinx_rtd_theme'
-        html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
-    except ImportError:
-        html_theme = 'alabaster'
+html_description = description.replace(
+    'Autodesk Maya',
+    '<a href="http://www.autodesk.com/products/maya">Autodesk Maya</a>')
 
+html_theme = 'alabaster'
+html_theme_options = {
+    'description': html_description,
+    'github_user': 'christophercrouzet',
+    'github_repo': 'revl',
+    'fixed_sidebar': True,
+}
+html_sidebars = {
+    '**': [
+        'about.html',
+        'navigation.html',
+        'relations.html',
+        'links.html',
+        'searchbox.html',
+        'donate.html',
+    ]
+}
 html_static_path = ['_static']
 
 
@@ -89,23 +108,20 @@ latex_elements = {
 }
 
 latex_documents = [
-    (master_doc, 'revl.tex', u"revl Documentation",
-     u"Christopher Crouzet", 'manual'),
+    (master_doc, 'revl.tex', u"revl Documentation", author, 'manual'),
 ]
 
 
 # -- Options for manual page output ---------------------------------------
 
 man_pages = [
-    (master_doc, 'revl', u"revl Documentation",
-     [author], 1)
+    (master_doc, 'revl', u"revl Documentation", [author], 1)
 ]
 
 
 # -- Options for Texinfo output -------------------------------------------
 
 texinfo_documents = [
-    (master_doc, 'revl', u"revl Documentation", author, 'revl',
-     "Helps to benchmark code for Autodesk Maya.",
+    (master_doc, 'revl', u"revl Documentation", author, 'revl', description,
      'Miscellaneous'),
 ]

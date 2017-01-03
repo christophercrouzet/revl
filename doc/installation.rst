@@ -3,69 +3,70 @@
 Installation
 ============
 
-Revl is written in the Python language and either requires to be run from
-within Autodesk's Maya, or using the ``mayapy`` shell.
+Revl requires to be run from within an `Autodesk Maya`_'s Python environment.
+This is usually done either by running the code from within an interactive
+session of Maya, or through using the ``mayapy`` shell. No additional
+dependency is required since a Python interpreter is already distributed with
+Maya.
+
+The recommended approach for installing a Python package such as Revl is to use
+|pip|_ [1]_. If ``pip`` is not already installed on your system, you can do so
+following these steps:
+
+    1. Download |get-pip.py|_.
+    2. Run ``python get-pip.py`` in a shell.
 
 
-The Easy Way
-------------
+.. note::
 
-If your Python-fu is up-to-date and you possess the latest trend in
-installation tools [1]_, then you can install the most recent version of
-Revl using `pip`_:
+   The installation commands described in this page might require ``sudo``
+   privileges to run successfully.
+
+
+System-Wide Installation
+------------------------
+
+Installing globally the most recent version of Revl can be done with |pip|_:
 
 .. code-block:: bash
 
    $ pip install revl
 
 
-An alternative would be to use `easy_install`_ (included in `setuptools`_):
+Or using |easy_install|_ (provided with |setuptools|_):
 
 .. code-block:: bash
 
    $ easy_install revl
 
 
-From the Source
----------------
-
-You can also download a compressed archive containing the source from either
-`PyPI`_ or `GitHub`_.
-
-Then, it's only a matter of:
-
-1. Decompressing the archive.
-2. Running ``python setup.py install`` from the resulting directory.
-
-
 Development Version
 -------------------
 
-If you want to stay cutting edge by using the development version, then
-you can:
+To stay cutting edge with the latest development progresses, it is possible to
+directly retrieve the source from the repository with the help of `Git`_:
 
-1. Install `Git`_.
-2. ``git clone https://github.com/christophercrouzet/revl.git``.
-3. ``cd revl``.
-4. ``pip install --editable .`` or ``python setup.py develop``.
+.. code-block:: bash
 
-
-Installing pip
---------------
-
-1. Download `get-pip.py`_.
-2. Run ``python get-pip.py``.
+   $ git clone https://github.com/christophercrouzet/revl.git
+   $ cd revl
+   $ python setup.py develop
 
 ----
 
 .. [1] See the `Python Packaging User Guide`_
 
 
-.. _Git: https://git-scm.com
-.. _GitHub: https://github.com/christophercrouzet/revl
-.. _PyPI: https://pypi.python.org/pypi/revl
-.. _Python Packaging User Guide: https://python-packaging-user-guide.readthedocs.io
+.. |easy_install| replace:: ``easy_install``
+.. |get-pip.py| replace:: ``get-pip.py``
+.. |pip| replace:: ``pip``
+.. |setuptools| replace:: ``setuptools``
+
+
+.. _Autodesk Maya: http://www.autodesk.com/products/maya
 .. _easy_install: http://peak.telecommunity.com/DevCenter/EasyInstall
 .. _get-pip.py: https://raw.github.com/pypa/pip/master/contrib/get-pip.py
+.. _Git: https://git-scm.com
 .. _pip: https://pypi.python.org/pypi/pip
+.. _Python Packaging User Guide: https://python-packaging-user-guide.readthedocs.io
 .. _setuptools: https://pypi.python.org/pypi/setuptools

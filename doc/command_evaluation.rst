@@ -12,6 +12,10 @@ Command Evaluation
    run
 
 
+----
+
 .. autoclass:: Context
+
+----
 
 .. autofunction:: run

@@ -32,8 +32,8 @@ class. Indeed, all the command definitions below are equal:
    >>> command3 = (1.0, revl.createTransform)
 
 
-The :ref:`command functions <command_functions>` being evaluated later on, any
-argument also needs to be passed to a command definition:
+The :ref:`command functions <command_functions>` being evaluated at a later
+stage, its arguments also need to be passed to the command definition:
 
 .. code-block:: python
 
