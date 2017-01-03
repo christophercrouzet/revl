@@ -83,35 +83,6 @@ Read the documentation online at <https://revl.readthedocs.io> or check its
 source in the ``doc`` directory.
 
 
-Running the Tests
------------------
-
-Tests are available in the ``tests`` directory and can be fired through the
-``run.py`` file:
-
-.. code-block:: bash
-
-   $ mayapy tests/run.py
-
-
-It is also possible to run specific tests by passing a space-separated list of
-partial names to match:
-
-.. code-block:: bash
-
-   $ mayapy tests/run.py TestClass
-
-
-Finally, each test file is standalone and can be directly executed.
-
-
-Running the Benchmarks
-----------------------
-
-Benchmarks are available in the ``benchmarks`` directory and can be fired in
-the same way as described above for the tests.
-
-
 Author
 ------
 
