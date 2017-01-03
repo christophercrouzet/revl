@@ -70,12 +70,6 @@ See the `Tutorial`_ section from the documentation for more detailed examples
 and explanations on how to use Revl.
 
 
-Installation
-------------
-
-See the `Installation`_ section from the documentation.
-
-
 Documentation
 -------------
 
@@ -93,7 +87,6 @@ Christopher Crouzet
 .. |timeit| replace:: ``timeit``
 
 .. _Autodesk Maya: http://www.autodesk.com/products/maya
-.. _Installation: https://revl.readthedocs.io/en/latest/installation.html
 .. _timeit: https://docs.python.org/library/timeit.html
 .. _Tutorial: https://revl.readthedocs.io/en/latest/tutorial.html
 .. _Wikipedia's Fuzzing page: https://en.wikipedia.org/wiki/Fuzzing
