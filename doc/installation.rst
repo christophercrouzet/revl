@@ -9,9 +9,13 @@ session of Maya, or through using the ``mayapy`` shell. No additional
 dependency is required since a Python interpreter is already distributed with
 Maya.
 
-The recommended approach for installing a Python package such as Revl is to use
-|pip|_ [1]_. If ``pip`` is not already installed on your system, you can do so
-following these steps:
+
+Installing pip
+--------------
+
+The recommended [1]_ approach for installing a Python package such as Revl is
+to use |pip|_, a package manager for projects written in Python. If ``pip`` is
+not already installed on your system, you can do so by following these steps:
 
     1. Download |get-pip.py|_.
     2. Run ``python get-pip.py`` in a shell.
@@ -26,7 +30,7 @@ following these steps:
 System-Wide Installation
 ------------------------
 
-Installing globally the most recent version of Revl can be done with |pip|_:
+Installing globally the most recent version of Revl can be done with ``pip``:
 
 .. code-block:: bash
 
