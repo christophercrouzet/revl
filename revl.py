@@ -91,8 +91,7 @@ _Command = collections.namedtuple(
         'function',
         'args',
         'kwargs',
-    )
-)
+    ))
 _Command.__new__.__defaults__ = (None, None)
 
 
@@ -126,8 +125,7 @@ class Command(_Command):
 _COMMAND_ATTR_COUNT = len(Command._fields)
 _COMMAND_REQUIRED_ARG_RANGE = _range(
     _COMMAND_ATTR_COUNT - len(Command.__new__.__defaults__),
-    _COMMAND_ATTR_COUNT + 1
-)
+    _COMMAND_ATTR_COUNT + 1)
 
 
 _Primitive = collections.namedtuple(
@@ -135,8 +133,7 @@ _Primitive = collections.namedtuple(
         'generator',
         'transform',
         'shapes',
-    )
-)
+    ))
 
 
 class Primitive(_Primitive):
@@ -220,8 +217,7 @@ _PrimitiveTraits = collections.namedtuple(
         'shapeType',
         'outPlugs',
         'inPlug',
-    )
-)
+    ))
 
 
 def _defineCurveTraits(type, outPlugs=None):
@@ -654,6 +650,7 @@ def _joinSequence(seq, lastSeparator=''):
         return ("%s'%s'" % (lastSeparator, item)
                 if count > 1 and index == count - 1
                 else "'%s'" % (item,))
+
 
     count = len(seq)
     return ', '.join(format(item, count, i) for i, item in enumerate(seq))

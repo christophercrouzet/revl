@@ -53,7 +53,7 @@ Usage
    >>> import revl
    >>> commands = [
    ...     (4.0, revl.createTransform,),
-   ...     (1.0, revl.createPrimitive, (), {'parent': True})
+   ...     (1.0, revl.createPrimitive, (), {'parent': True}),
    ... ]
    >>> count = 100
    >>> revl.run(commands, count, seed=1.23)
