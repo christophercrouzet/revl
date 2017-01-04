@@ -6,9 +6,9 @@ Overview
 ========
 
 Upon writing a piece of code for Maya, it might be interesting to know how it
-performs under different conditions, such as within scenes that are large or
-small, that define a deep DAG hiearchy or a flat one, that use many node types
-or only a few, and so on.
+performs **under different conditions**, such as within scenes that are large
+or small, that define a deep DAG hiearchy or a flat one, that use many node
+types or only a few, and so on.
 
 Following sets of user-provided commands, Revl can **pseudo-randomly generate
 Maya scenes** with different properties against which the behaviour of a piece
@@ -16,7 +16,7 @@ of code can be observed.
 
 The random nature of the process can also help revealing potential bugs by
 exposing edge cases that were not thought of, thus making it also a good tool
-for unit testing. See `Wikipedia's Fuzzing page`_.
+for **unit testing**. See `Wikipedia's Fuzzing page`_.
 
 Note that Revl does *not* provide any sort of profiling tool to measure
 performances. The built-in |timeit|_ module as well as other open-source
