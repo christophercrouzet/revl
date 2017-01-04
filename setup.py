@@ -4,7 +4,7 @@ import re
 import setuptools
 
 
-def read(*names, **kwargs):
+def _read(*names, **kwargs):
     # Credits: https://packaging.python.org/single_source_version.
     here = os.path.dirname(__file__)
     encoding = kwargs.get('encoding', 'utf8')
@@ -12,9 +12,9 @@ def read(*names, **kwargs):
         return fp.read()
 
 
-def findVersion(*filePaths):
+def _findVersion(*filePaths):
     # Credits: https://packaging.python.org/single_source_version.
-    versionFile = read(*filePaths)
+    versionFile = _read(*filePaths)
     versionMatch = re.search(r"^__version__ = ['\"]([^'\"]*)['\"]",
                              versionFile, re.M)
     if versionMatch:
@@ -25,9 +25,9 @@ def findVersion(*filePaths):
 
 setuptools.setup(
     name='revl',
-    version=findVersion('revl.py'),
+    version=_findVersion('revl.py'),
     description="Helps to benchmark code for Autodesk Maya",
-    long_description=read('README.rst'),
+    long_description=_read('README.rst'),
     keywords='Autodesk Maya API benchmark test',
     license='MIT',
     url='https://github.com/christophercrouzet/revl',
