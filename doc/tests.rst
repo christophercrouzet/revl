@@ -64,4 +64,4 @@ coverage status.
 
 .. |coverage| replace:: ``coverage``
 
-.. _coverage: https://bitbucket.org/ned/coveragepy
+.. _coverage: https://coverage.readthedocs.io
