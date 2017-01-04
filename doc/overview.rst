@@ -26,7 +26,7 @@ packages can be used for this purpose.
 Features
 --------
 
-* generate scenes by running commands a given total number of times.
+* generates scenes by running commands a given total number of times.
 * fine control over the probability distribution for each command.
 * scene generations are reproducible using a fixed seed.
 * extensible with custom commands.
