@@ -43,6 +43,10 @@ setuptools.setup(
         'Topic :: Software Development :: Libraries :: Python Modules',
         'Topic :: Utilities'
     ],
+    extras_require={
+        'dev': ['coverage', 'sphinx>=1.3'],
+        'docs': ['sphinx>=1.3'],
+    },
     packages=[],
     py_modules=['revl'],
     include_package_data=True
