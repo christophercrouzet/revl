@@ -60,12 +60,10 @@ directly retrieve the source from the repository with the help of `Git`_:
 
 .. [1] See the `Python Packaging User Guide`_
 
-
 .. |easy_install| replace:: ``easy_install``
 .. |get-pip.py| replace:: ``get-pip.py``
 .. |pip| replace:: ``pip``
 .. |setuptools| replace:: ``setuptools``
-
 
 .. _Autodesk Maya: http://www.autodesk.com/products/maya
 .. _easy_install: http://peak.telecommunity.com/DevCenter/EasyInstall

@@ -55,7 +55,6 @@ Also, the primitive type is picked randomly, and each primitive's transform is
 randomly parented under another transform from the scene, possibly creating a
 scene with a deep DAG hierarchy.
 
-
 .. seealso::
 
    The :ref:`tutorial` section for more detailed examples and explanations on

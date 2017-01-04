@@ -22,7 +22,6 @@ partial names to match:
 
 Finally, each test file is a standalone and can be directly executed.
 
-
 .. note::
 
    There are also benchmarks available in the ``benchmarks`` directory. They
