@@ -66,9 +66,9 @@ directly retrieve the source from the repository with the help of `Git`_:
 .. |setuptools| replace:: ``setuptools``
 
 .. _Autodesk Maya: http://www.autodesk.com/products/maya
-.. _easy_install: http://peak.telecommunity.com/DevCenter/EasyInstall
+.. _easy_install: https://setuptools.readthedocs.io/en/latest/easy_install.html
 .. _get-pip.py: https://raw.github.com/pypa/pip/master/contrib/get-pip.py
 .. _Git: https://git-scm.com
-.. _pip: https://pypi.python.org/pypi/pip
+.. _pip: https://github.com/pypa/pip
 .. _Python Packaging User Guide: https://python-packaging-user-guide.readthedocs.io
-.. _setuptools: https://pypi.python.org/pypi/setuptools
+.. _setuptools: https://github.com/pypa/setuptools
