@@ -4,8 +4,20 @@ Running the Tests
 =================
 
 After making any code change in Revl, tests need to be evaluated to ensure that
-the library still behaves as expected. These tests are available in the
-``tests`` directory and can be fired through the ``test/run.py`` file:
+the library still behaves as expected.
+
+.. note::
+
+   Some of the commands below are wrapped into ``make`` targets for
+   convenience, see the file ``Makefile``.
+
+
+unittest
+--------
+
+The tests are written using Python's built-in ``unittest`` module. They are
+available in the ``tests`` directory and can be fired through the
+``test/run.py`` file:
 
 .. code-block:: bash
 
@@ -20,9 +32,36 @@ partial names to match:
    $ mayapy tests/run.py ThisTestClass and_that_function
 
 
-Finally, each test file is a standalone and can be directly executed.
+The ``unittest``'s command line interface is also supported:
 
-.. note::
+.. code-block:: bash
 
-   There are also benchmarks available in the ``benchmarks`` directory. They
-   can be fired in the same way as described above for the tests.
+   $ mayapy -m unittest discover -s tests -v
+
+
+Finally, each test file is a **standalone** and can be directly executed.
+
+
+coverage
+--------
+
+The package |coverage|_ is used to help localize code snippets that could
+benefit from having some more testing:
+
+.. code-block:: bash
+
+   $ mayapy -m coverage run --source revl -m unittest discover -s tests
+   $ coverage report
+   $ coverage html
+
+
+In no way should ``coverage`` be a race to the 100% mark since it is *not*
+always meaningful to cover each single line of code. Furthermore, **having some
+code fully covered isn't synonym to having quality tests**. This is our
+responsability, as developers, to write each test properly regardless of the
+coverage status.
+
+
+.. |coverage| replace:: ``coverage``
+
+.. _coverage: https://bitbucket.org/ned/coveragepy
