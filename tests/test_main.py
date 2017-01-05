@@ -50,8 +50,8 @@ class MainTest(unittest.TestCase):
 
     def testRun1(self):
         commands = [
-            (1.0, incrementA,),
-            (1.0, incrementB,),
+            (1.0, incrementA),
+            (1.0, incrementB),
         ]
         context = revl.run(commands, 123)
         self.assertIsInstance(context, revl.Context)
@@ -61,8 +61,8 @@ class MainTest(unittest.TestCase):
 
     def testRun2(self):
         commands = [
-            (1.0, incrementA,),
-            (0.0, incrementB,),
+            (1.0, incrementA),
+            (0.0, incrementB),
         ]
         context = revl.run(commands, 123)
         self.assertIsInstance(context, revl.Context)
@@ -71,8 +71,8 @@ class MainTest(unittest.TestCase):
 
     def testRun3(self):
         commands = [
-            (2.0, incrementA,),
-            (1.0, incrementB,),
+            (2.0, incrementA),
+            (1.0, incrementB),
         ]
         context = revl.run(commands, 123)
         self.assertIsInstance(context, revl.Context)
@@ -84,8 +84,8 @@ class MainTest(unittest.TestCase):
     def testRun4(self):
         global globalA, globalB
         commands = [
-            (2.34, incrementA,),
-            (1.23, incrementB,),
+            (2.34, incrementA),
+            (1.23, incrementB),
         ]
         aValues = []
         bValues = []
@@ -110,8 +110,8 @@ class MainTest(unittest.TestCase):
 
     def testRun7(self):
         commands = [
-            [0, incrementA,],
-            [-1.23, incrementB,],
+            [0, incrementA],
+            [-1.23, incrementB],
         ]
         context = revl.run(commands, 123)
         self.assertIsInstance(context, revl.Context)
