@@ -128,12 +128,12 @@ class MainTest(unittest.TestCase):
         with self.assertRaises(TypeError) as c:
             revl.run(['abc'], 1)
 
-        self.assertEqual(str(c.exception), "Each command is expected to be an instance object of type 'list', or 'tuple' but got 'str' instead.")
+        self.assertEqual(str(c.exception), "Each command is expected to be an instance object of type 'list', 'tuple', or 'revl.Command', not 'str'.")
 
         with self.assertRaises(TypeError) as c:
             revl.run([()], 1)
 
-        self.assertEqual(str(c.exception), "Each command is expected to be an instance object of type 'list', or 'tuple' and compatible with 'revl.Command' but got '()' instead.")
+        self.assertEqual(str(c.exception), "Each command is expected to be an instance object of type 'list', 'tuple', or 'revl.Command', and compatible with the 'revl.Command' structure, but got '()' instead.")
 
         with self.assertRaises(TypeError) as c:
             revl.run([('abc', dummy, (), {})], 1)

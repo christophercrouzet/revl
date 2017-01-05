@@ -526,16 +526,17 @@ def _check(commands):
     for command in commands:
         if not isinstance(command, _SEQUENCE_TYPES):
             raise TypeError(
-                "Each command is expected to be an instance object of type %s "
-                "but got '%s' instead." % (_joinTypes(_SEQUENCE_TYPES, "or "),
-                                           _formatType(type(command)),))
+                "Each command is expected to be an instance object of type "
+                "%s, not '%s'."
+                % (_joinTypes(_SEQUENCE_TYPES + (Command,), "or "),
+                   _formatType(type(command)),))
 
         if len(command) not in _COMMAND_REQUIRED_ARG_RANGE:
             raise TypeError(
-                "Each command is expected to be an instance object of type %s "
-                "and compatible with '%s' but got '%s' instead."
-                % (_joinTypes(_SEQUENCE_TYPES, "or "), _formatType(Command),
-                   command))
+                "Each command is expected to be an instance object of type "
+                "%s, and compatible with the '%s' structure, but got '%s' "
+                "instead." % (_joinTypes(_SEQUENCE_TYPES + (Command,), "or "),
+                              _formatType(Command), command))
 
     # Check each command attribute.
     for command in commands:
