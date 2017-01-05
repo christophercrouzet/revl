@@ -524,15 +524,18 @@ def _check(commands):
 
     # Check the overall shape of each command.
     for command in commands:
-        if not isinstance(command, tuple):
+        if not isinstance(command, _SEQUENCE_TYPES):
             raise TypeError(
-                "Each command is expected to be a tuple but got '%s' instead."
-                % (_formatType(type(command)),))
+                "Each command is expected to be an instance object of type %s "
+                "but got '%s' instead." % (_joinTypes(_SEQUENCE_TYPES, "or "),
+                                           _formatType(type(command)),))
 
         if len(command) not in _COMMAND_REQUIRED_ARG_RANGE:
             raise TypeError(
-                "Each command is expected to be a tuple compatible with '%s' "
-                "but got '%s' instead." % (_formatType(Command), command))
+                "Each command is expected to be an instance object of type %s "
+                "and compatible with '%s' but got '%s' instead."
+                % (_joinTypes(_SEQUENCE_TYPES, "or "), _formatType(Command),
+                   command))
 
     # Check each command attribute.
     for command in commands:
