@@ -5,9 +5,8 @@ Installation
 
 Revl requires to be run from within an `Autodesk Maya`_'s Python environment.
 This is usually done either by running the code from within an interactive
-session of Maya, or through using the ``mayapy`` shell. No additional
-dependency is required since a Python interpreter is already distributed with
-Maya.
+session of Maya, or through using the ``mayapy`` shell. A Python interpreter is
+already distributed with Maya so there is no need to install one.
 
 
 Installing pip
