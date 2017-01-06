@@ -62,6 +62,34 @@ responsability, as developers, to write each test properly regardless of the
 coverage status.
 
 
+Benchmarks
+----------
+
+A set of benchmarks are also available to keep the running performances in
+check. They are to be found in the ``benchmarks`` folder and can be run in
+a similar fashion to the tests through the ``benchmarks/run.py`` file:
+
+.. code-block:: bash
+
+   $ mayapy benchmarks/run.py
+
+
+Or for more specificity:
+
+.. code-block:: bash
+
+   $ mayapy benchmarks/run.py ThisBenchClass and_that_function
+
+
+Here again, each benchmark file is a **standalone** and can be directly
+executed.
+
+.. note::
+
+   The command line interface ``mayapy -m unittest discover`` is not supported
+   for the benchmarks.
+
+
 .. |coverage| replace:: ``coverage``
 
 .. _coverage: https://coverage.readthedocs.io
