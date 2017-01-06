@@ -61,6 +61,7 @@ scene with a deep DAG hierarchy.
    how to use Revl.
 
 
-.. _Wikipedia's Fuzzing page: https://en.wikipedia.org/wiki/Fuzzing
 .. |timeit| replace:: ``timeit``
+
 .. _timeit: https://docs.python.org/library/timeit.html
+.. _Wikipedia's Fuzzing page: https://en.wikipedia.org/wiki/Fuzzing
