@@ -15,7 +15,7 @@ the library still behaves as expected.
 unittest
 --------
 
-The tests are written using Python's built-in ``unittest`` module. They are
+The tests are written using Python's built-in |unittest|_ module. They are
 available in the ``tests`` directory and can be fired through the
 ``tests/run.py`` file:
 
@@ -91,5 +91,7 @@ executed.
 
 
 .. |coverage| replace:: ``coverage``
+.. |unittest| replace:: ``unittest``
 
 .. _coverage: https://coverage.readthedocs.io
+.. _unittest: https://docs.python.org/library/unittest.html
