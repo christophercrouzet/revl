@@ -343,7 +343,7 @@ def pickTransform(context):
     return context.transforms[random.randint(0, len(context.transforms) - 1)]
 
 
-def createDagNode(context, type, parent=None):
+def createDagNode(context, type, parent=False):
     """Create a DAG node.
 
     To create a transform node or a geometry primitive, respectively use the
