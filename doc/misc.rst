@@ -10,8 +10,8 @@ Miscellaneous
 
    NULL_OBJ
    Command
-   PrimitiveType
    Primitive
+   PrimitiveType
    pickTransform
 
 
@@ -23,15 +23,15 @@ Miscellaneous
 
 ----
 
-.. autoclass:: Command
+.. autoclass:: Command(weight, function, args=None, kwargs=None)
+
+----
+
+.. autoclass:: Primitive(generator, transform, shapes)
 
 ----
 
 .. autoclass:: PrimitiveType
-
-----
-
-.. autoclass:: Primitive
 
 ----
 
