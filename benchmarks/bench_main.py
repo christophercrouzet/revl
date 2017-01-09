@@ -18,6 +18,9 @@ import revl
 
 class MainBench(unittest.TestCase):
 
+    def setUp(self):
+        OpenMaya.MFileIO.newFile(True)
+
     def benchCreatePrimitive1(self):
         count = 5000
         commands = [

@@ -46,9 +46,13 @@ class BenchRunner(object):
                 continue
 
             function = getattr(bench, _getBenchName(bench))
+
+            bench.setUp()
             start = _clock()
             function()
             elapsed = _clock() - start
+            bench.tearDown()
+
             elapsed, unit = _convertTimeUnit(elapsed)
             print("%s (%s.%s) ... %.3f %ss"
                   % (_getBenchName(bench), bench.__class__.__module__,
