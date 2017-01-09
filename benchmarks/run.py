@@ -25,6 +25,19 @@ _DESCRIPTION = (
 )
 
 
+# Enumerator for the internal messages.
+_MESSAGE_SUITE_SETUP = 0
+_MESSAGE_SUITE_TEARDOWN = 1
+
+
+_Message = collections.namedtuple(
+    '_Message', (
+        'type',
+        'value',
+    )
+)
+
+
 class DummyResult(object):
 
     def wasSuccessful(self):
@@ -40,23 +53,44 @@ class BenchRunner(object):
     def run(self, bench):
         stack = collections.deque((bench,))
         while stack:
-            bench = stack.popleft()
-            if isinstance(bench, unittest.TestSuite):
-                stack.extend(case for case in bench)
-                continue
+            obj = stack.popleft()
+            if isinstance(obj, _Message):
+                if obj.type == _MESSAGE_SUITE_SETUP:
+                    obj.value.setUpClass()
+                elif obj.type == _MESSAGE_SUITE_TEARDOWN:
+                    obj.value.tearDownClass()
+            elif isinstance(obj, unittest.TestSuite):
+                suites = [suite for suite in obj
+                          if isinstance(suite, unittest.TestSuite)]
+                cases = [case for case in obj
+                         if not isinstance(case, unittest.TestSuite)]
 
-            function = getattr(bench, _getBenchName(bench))
+                stack.extend(suites)
 
-            bench.setUp()
-            start = _clock()
-            function()
-            elapsed = _clock() - start
-            bench.tearDown()
+                seen = set()
+                classes = [case.__class__ for case in cases
+                           if case.__class__ not in seen
+                           and seen.add(case.__class__) is None]
+                for cls in classes:
+                    stack.append(_Message(type=_MESSAGE_SUITE_SETUP,
+                                          value=cls))
+                    stack.extend(case for case in cases
+                                 if case.__class__ is cls)
+                    stack.append(_Message(type=_MESSAGE_SUITE_TEARDOWN,
+                                          value=cls))
+            else:
+                function = getattr(obj, _getBenchName(obj))
 
-            elapsed, unit = _convertTimeUnit(elapsed)
-            print("%s (%s.%s) ... %.3f %ss"
-                  % (_getBenchName(bench), bench.__class__.__module__,
-                     bench.__class__.__name__, elapsed, unit))
+                obj.setUp()
+                start = _clock()
+                function()
+                elapsed = _clock() - start
+                obj.tearDown()
+
+                elapsed, unit = _convertTimeUnit(elapsed)
+                print("%s (%s.%s) ... %.3f %ss"
+                      % (_getBenchName(obj), obj.__class__.__module__,
+                         obj.__class__.__name__, elapsed, unit))
 
         return DummyResult()
 
