@@ -502,6 +502,25 @@ class MainTest(unittest.TestCase):
             OpenMaya.MDagPath.getAPathTo(primitive.transform, dagPath)
             self.assertTrue(dagPath.length() > 1)
 
+    def testCreatePrimitive5(self):
+        context = revl.Context()
+
+        primitive = revl.createPrimitive(context, parent=True, forceTransformCreation=False)
+        self.assertIsInstance(primitive, revl.Primitive)
+        self.assertTrue(primitive.generator.hasFn(OpenMaya.MFn.kCreate) or primitive.generator.hasFn(OpenMaya.MFn.kPolyPrimitive))
+        self.assertTrue(primitive.transform.hasFn(OpenMaya.MFn.kTransform))
+        self.assertTrue(len(primitive.shapes) > 0)
+        self.assertTrue(all(shape.hasFn(OpenMaya.MFn.kGeometric) for shape in primitive.shapes))
+        self.assertEqual(len(context.transforms), 1)
+
+        primitive = revl.createPrimitive(context, parent=True, forceTransformCreation=False)
+        self.assertIsInstance(primitive, revl.Primitive)
+        self.assertTrue(primitive.generator.hasFn(OpenMaya.MFn.kCreate) or primitive.generator.hasFn(OpenMaya.MFn.kPolyPrimitive))
+        self.assertTrue(primitive.transform.hasFn(OpenMaya.MFn.kTransform))
+        self.assertTrue(len(primitive.shapes) > 0)
+        self.assertTrue(all(shape.hasFn(OpenMaya.MFn.kGeometric) for shape in primitive.shapes))
+        self.assertEqual(len(context.transforms), 1)
+
     def testCreateTransform(self):
         context = revl.Context()
         oTransforms = []

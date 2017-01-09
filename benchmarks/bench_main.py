@@ -46,6 +46,13 @@ class MainBench(unittest.TestCase):
         ]
         revl.run(commands, count)
 
+    def benchCreatePrimitive5(self):
+        count = 5000
+        commands = [
+            (1.0, revl.createPrimitive, (), {'parent': True, 'forceTransformCreation': False})
+        ]
+        revl.run(commands, count)
+
     def benchCreateTransform1(self):
         count = 5000
         commands = [

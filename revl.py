@@ -402,10 +402,9 @@ def createDgNode(context, type):
     return context.dg.createNode(type)
 
 
-def createPrimitive(context, type=None, name=None, parent=False):
+def createPrimitive(context, type=None, name=None, parent=False,
+                    forceTransformCreation=True):
     """Create a geometry primitive.
-
-    A new transform is always created with the shapes as child.
 
     Parameters
     ----------
@@ -422,6 +421,11 @@ def createPrimitive(context, type=None, name=None, parent=False):
         ``True`` to parent the new transform under another transform randomly
         picked from the scene, if any. Otherwise it is parented under the
         world.
+    forceTransformCreation : bool
+        ``True`` to always create a new transform with the shapes as child,
+        otherwise a new transform is created only if the parameter ``parent``
+        is ``False`` or if no transform could be found in the scene to parent
+        the shapes to.
 
     Returns
     -------
@@ -432,11 +436,15 @@ def createPrimitive(context, type=None, name=None, parent=False):
     if type is None:
         type = random.randint(PrimitiveType._FIRST, PrimitiveType._LAST)
 
-    traits = _PRIMITIVE_TRAITS[type]
     oParent = pickTransform(context) if parent else NULL_OBJ
+    if forceTransformCreation or oParent == NULL_OBJ:
+        oTransform = context.dag.createNode('transform', oParent)
+        context.transforms.append(oTransform)
+    else:
+        oTransform = oParent
 
+    traits = _PRIMITIVE_TRAITS[type]
     oGenerator = context.dg.createNode(traits.type)
-    oTransform = context.dag.createNode('transform', oParent)
     generator = OpenMaya.MFnDependencyNode(oGenerator)
 
     shapes = []
@@ -452,7 +460,6 @@ def createPrimitive(context, type=None, name=None, parent=False):
     if name is not None:
         OpenMaya.MFnDagNode(oTransform).setName(name)
 
-    context.transforms.append(oTransform)
     return Primitive(generator=oGenerator, transform=oTransform, shapes=shapes)
 
 
