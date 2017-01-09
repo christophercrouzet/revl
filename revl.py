@@ -371,7 +371,7 @@ def createDagNode(context, type, parent=None):
     """
     if parent:
         oParent = pickTransform(context)
-        if oParent == NULL_OBJ:
+        if oParent is NULL_OBJ:
             return NULL_OBJ
     else:
         oParent = context.dag.createNode('transform')
@@ -437,7 +437,7 @@ def createPrimitive(context, type=None, name=None, parent=False,
         type = random.randint(PrimitiveType._FIRST, PrimitiveType._LAST)
 
     oParent = pickTransform(context) if parent else NULL_OBJ
-    if forceTransformCreation or oParent == NULL_OBJ:
+    if forceTransformCreation or oParent is NULL_OBJ:
         oTransform = context.dag.createNode('transform', oParent)
         context.transforms.append(oTransform)
     else:
@@ -500,7 +500,7 @@ def unparent(context):
         Command context.
     """
     oNode = pickTransform(context)
-    if oNode == NULL_OBJ:
+    if oNode is NULL_OBJ:
         return
 
     context.dag.reparentNode(oNode, NULL_OBJ)
