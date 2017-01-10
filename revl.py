@@ -25,10 +25,7 @@ from maya import OpenMaya
 __version__ = '0.1.0'
 
 
-_PY2 = sys.version_info[0] == 2
-
-
-if _PY2:
+if sys.version_info[0] == 2:
     _BUILTIN_MODULE = '__builtin__'
 
     def _iteritems(d, **kwargs):
