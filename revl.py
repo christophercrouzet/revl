@@ -448,10 +448,8 @@ def createPrimitive(context, type=None, name=None, parent=False,
     for outPlug in traits.outPlugs:
         oShape = context.dag.createNode(traits.shapeType, oTransform)
         shape = OpenMaya.MFnDagNode(oShape)
-        context.dg.connect(
-            generator.findPlug(outPlug),
-            shape.findPlug(traits.inPlug))
-
+        context.dg.connect(generator.findPlug(outPlug),
+                           shape.findPlug(traits.inPlug))
         shapes.append(oShape)
 
     if name is not None:
