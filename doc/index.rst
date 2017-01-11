@@ -42,6 +42,7 @@ Additional Information
    changelog
    versioning
    license
+   out_there
 
 
 .. testsetup::

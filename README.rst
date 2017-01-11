@@ -77,6 +77,14 @@ Read the documentation online at `revl.readthedocs.io`_ or check its source in
 the ``doc`` directory.
 
 
+Out There
+---------
+
+Projects using Revl include:
+
+* `bana <https://github.com/christophercrouzet/bana>`_
+
+
 Author
 ------
 
