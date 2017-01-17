@@ -79,7 +79,7 @@ class Context(object):
     def __repr__(self):
         values = ', '.join(['%s=%r' % (k, v)
                             for k, v in sorted(_iteritems(self.__dict__))])
-        return "%s(%s)" % (self.__class__.__name__, values)
+        return "%s(%s)" % (type(self).__name__, values)
 
 
 _Command = collections.namedtuple(
