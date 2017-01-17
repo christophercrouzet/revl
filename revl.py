@@ -373,7 +373,6 @@ def run(commands, count, seed=None, context=None):
     >>> revl.run(commands, 100, seed=1.23)
     """
     random.seed(seed)
-    validate(commands)
     commands = _consolidate(commands)
 
     if context is None:

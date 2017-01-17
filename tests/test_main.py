@@ -53,6 +53,8 @@ class MainTest(unittest.TestCase):
             (1.0, incrementA),
             (1.0, incrementB),
         ]
+        self.assertTrue(revl.validate(commands))
+
         context = revl.run(commands, 123)
         self.assertIsInstance(context, revl.Context)
         self.assertTrue(globalA > 0)
@@ -64,6 +66,8 @@ class MainTest(unittest.TestCase):
             (1.0, incrementA),
             (0.0, incrementB),
         ]
+        self.assertTrue(revl.validate(commands))
+
         context = revl.run(commands, 123)
         self.assertIsInstance(context, revl.Context)
         self.assertEqual(globalA, 123)
@@ -74,6 +78,8 @@ class MainTest(unittest.TestCase):
             (2.0, incrementA),
             (1.0, incrementB),
         ]
+        self.assertTrue(revl.validate(commands))
+
         context = revl.run(commands, 123)
         self.assertIsInstance(context, revl.Context)
         self.assertTrue(globalA > 0)
@@ -87,6 +93,8 @@ class MainTest(unittest.TestCase):
             (2.34, incrementA),
             (1.23, incrementB),
         ]
+        self.assertTrue(revl.validate(commands))
+
         aValues = []
         bValues = []
         for _ in range(123):
@@ -101,11 +109,17 @@ class MainTest(unittest.TestCase):
         self.assertTrue(all(b == globalB for b in bValues))
 
     def testRun5(self):
-        context = revl.run([], 123)
+        commands = []
+        self.assertTrue(revl.validate(commands))
+
+        context = revl.run(commands, 123)
         self.assertIsInstance(context, revl.Context)
 
     def testRun6(self):
-        context = revl.run([], 123, context=revl.Context())
+        commands = []
+        self.assertTrue(revl.validate(commands))
+
+        context = revl.run(commands, 123, context=revl.Context())
         self.assertIsInstance(context, revl.Context)
 
     def testRun7(self):
@@ -113,6 +127,8 @@ class MainTest(unittest.TestCase):
             [0, incrementA],
             [-1.23, incrementB],
         ]
+        self.assertTrue(revl.validate(commands))
+
         context = revl.run(commands, 123)
         self.assertIsInstance(context, revl.Context)
 
@@ -121,37 +137,37 @@ class MainTest(unittest.TestCase):
             pass
 
         with self.assertRaises(TypeError) as c:
-            revl.run('abc', 1)
+            revl.validate('abc')
 
         self.assertEqual(str(c.exception), "The command set is expected to be an instance object of type 'list', or 'tuple', not 'str'.")
 
         with self.assertRaises(TypeError) as c:
-            revl.run(['abc'], 1)
+            revl.validate(['abc'])
 
         self.assertEqual(str(c.exception), "Each command is expected to be an instance object of type 'list', 'tuple', or 'revl.Command', not 'str'.")
 
         with self.assertRaises(TypeError) as c:
-            revl.run([()], 1)
+            revl.validate([()])
 
         self.assertEqual(str(c.exception), "Each command is expected to be an instance object of type 'list', 'tuple', or 'revl.Command', and compatible with the 'revl.Command' structure, but got '()' instead.")
 
         with self.assertRaises(TypeError) as c:
-            revl.run([('abc', dummy, (), {})], 1)
+            revl.validate([('abc', dummy, (), {})])
 
         self.assertEqual(str(c.exception), "The first element of a command, that is the 'weight' attribute, is expected to be a real number, not 'str'.")
 
         with self.assertRaises(TypeError) as c:
-            revl.run([(1.0, 'abc', (), {})], 1)
+            revl.validate([(1.0, 'abc', (), {})])
 
         self.assertEqual(str(c.exception), "The second element of a command, that is the 'function' attribute, is expected to be a callable object, not 'str'.")
 
         with self.assertRaises(TypeError) as c:
-            revl.run([(1.0, dummy, 'abc', {})], 1)
+            revl.validate([(1.0, dummy, 'abc', {})])
 
         self.assertEqual(str(c.exception), "The third element of a command, that is the 'args' attribute, is expected to be an instance object of type 'list', 'tuple', or 'NoneType', not 'str'.")
 
         with self.assertRaises(TypeError) as c:
-            revl.run([(1.0, dummy, (), 'abc')], 1)
+            revl.validate([(1.0, dummy, (), 'abc')])
 
         self.assertEqual(str(c.exception), "The fourth element of a command, that is the 'kwargs' attribute, is expected to be an instance object of type 'dict', or 'NoneType', not 'str'.")
 
