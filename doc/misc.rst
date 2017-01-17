@@ -8,12 +8,17 @@ Miscellaneous
 .. autosummary::
    :nosignatures:
 
+   validate
    NULL_OBJ
    Command
    Primitive
    PrimitiveType
    pickTransform
 
+
+----
+
+.. autofunction:: validate
 
 ----
 

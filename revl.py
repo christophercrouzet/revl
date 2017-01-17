@@ -262,6 +262,80 @@ _PRIMITIVE_TRAITS = {
 }
 
 
+def validate(commands):
+    """Check if the commands are well-formed.
+
+    Parameters
+    ----------
+    commands : list of revl.Command or compatible tuple
+        Commands.
+
+    Raises
+    ------
+    TypeError
+        Some of the commands aren't well-formed.
+    """
+    # The following checks are not to enforce some sort of type checking
+    # in place of Python's duck typing but rather to give a chance to provide
+    # more meaningful error messages to the user.
+
+    if not isinstance(commands, _SEQUENCE_TYPES):
+        raise TypeError(
+            "The command set is expected to be an instance object of type %s, "
+            "not '%s'." % (_joinTypes(_SEQUENCE_TYPES, "or "),
+                           _formatType(type(commands)),))
+
+    # Check the overall shape of each command.
+    for command in commands:
+        if not isinstance(command, _SEQUENCE_TYPES):
+            raise TypeError(
+                "Each command is expected to be an instance object of type "
+                "%s, not '%s'."
+                % (_joinTypes(_SEQUENCE_TYPES + (Command,), "or "),
+                   _formatType(type(command)),))
+
+        if len(command) not in _COMMAND_REQUIRED_ARG_RANGE:
+            raise TypeError(
+                "Each command is expected to be an instance object of type "
+                "%s, and compatible with the '%s' structure, but got '%s' "
+                "instead." % (_joinTypes(_SEQUENCE_TYPES + (Command,), "or "),
+                              _formatType(Command), command))
+
+    # Check each command attribute.
+    for command in commands:
+        command = Command(*command)
+        if not isinstance(command.weight, numbers.Real):
+            raise TypeError(
+                "The first element of a command, that is the 'weight' "
+                "attribute, is expected to be a real number, not '%s'."
+                % (_formatType(type(command.weight))))
+
+        if not callable(command.function):
+            raise TypeError(
+                "The second element of a command, that is the 'function' "
+                "attribute, is expected to be a callable object, not '%s'."
+                % (_formatType(type(command.function))))
+
+        if (command.args is not None
+                and not isinstance(command.args, _SEQUENCE_TYPES)):
+            raise TypeError(
+                "The third element of a command, that is the 'args' "
+                "attribute, is expected to be an instance object of type %s, "
+                "not '%s'."
+                % (_joinTypes(_SEQUENCE_TYPES + (type(None),), "or "),
+                   _formatType(type(command.args))))
+
+        if (command.kwargs is not None
+                and not isinstance(command.kwargs, dict)):
+            raise TypeError(
+                "The fourth element of a command, that is the 'kwargs' "
+                "attribute, is expected to be an instance object of type "
+                "'dict', or 'NoneType', not '%s'."
+                % (_formatType(type(command.kwargs))))
+
+    return True
+
+
 def run(commands, count, seed=None, context=None):
     """Randomly run weighted commands from a set.
 
@@ -299,7 +373,7 @@ def run(commands, count, seed=None, context=None):
     >>> revl.run(commands, 100, seed=1.23)
     """
     random.seed(seed)
-    _check(commands)
+    validate(commands)
     commands = _consolidate(commands)
 
     if context is None:
@@ -499,78 +573,6 @@ def unparent(context):
         return
 
     context.dag.reparentNode(oNode, NULL_OBJ)
-
-
-def _check(commands):
-    """Check if the commands are well-formed.
-
-    Parameters
-    ----------
-    commands : list of revl.Command or compatible tuple
-        Commands.
-
-    Raises
-    ------
-    TypeError
-        Some of the commands aren't well-formed.
-    """
-    # The following checks are not to enforce some sort of type checking
-    # in place of Python's duck typing but rather to give a chance to provide
-    # more meaningful error messages to the user.
-
-    if not isinstance(commands, _SEQUENCE_TYPES):
-        raise TypeError(
-            "The command set is expected to be an instance object of type %s, "
-            "not '%s'." % (_joinTypes(_SEQUENCE_TYPES, "or "),
-                           _formatType(type(commands)),))
-
-    # Check the overall shape of each command.
-    for command in commands:
-        if not isinstance(command, _SEQUENCE_TYPES):
-            raise TypeError(
-                "Each command is expected to be an instance object of type "
-                "%s, not '%s'."
-                % (_joinTypes(_SEQUENCE_TYPES + (Command,), "or "),
-                   _formatType(type(command)),))
-
-        if len(command) not in _COMMAND_REQUIRED_ARG_RANGE:
-            raise TypeError(
-                "Each command is expected to be an instance object of type "
-                "%s, and compatible with the '%s' structure, but got '%s' "
-                "instead." % (_joinTypes(_SEQUENCE_TYPES + (Command,), "or "),
-                              _formatType(Command), command))
-
-    # Check each command attribute.
-    for command in commands:
-        command = Command(*command)
-        if not isinstance(command.weight, numbers.Real):
-            raise TypeError(
-                "The first element of a command, that is the 'weight' "
-                "attribute, is expected to be a real number, not '%s'."
-                % (_formatType(type(command.weight))))
-
-        if not callable(command.function):
-            raise TypeError(
-                "The second element of a command, that is the 'function' "
-                "attribute, is expected to be a callable object, not '%s'."
-                % (_formatType(type(command.function))))
-
-        if (command.args is not None
-                and not isinstance(command.args, _SEQUENCE_TYPES)):
-            raise TypeError(
-                "The third element of a command, that is the 'args' "
-                "attribute, is expected to be an instance object of type %s, "
-                "not '%s'."
-                % (_joinTypes(_SEQUENCE_TYPES + (type(None),), "or "),
-                   _formatType(type(command.args))))
-
-        if (command.kwargs is not None
-                and not isinstance(command.kwargs, dict)):
-            raise TypeError(
-                "The fourth element of a command, that is the 'kwargs' "
-                "attribute, is expected to be an instance object of type "
-                "'dict', or 'NoneType', not '%s'."
-                % (_formatType(type(command.kwargs))))
 
 
 def _consolidate(commands):
