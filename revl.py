@@ -342,6 +342,8 @@ def run(commands, count, seed=None, context=None):
     Each command comes with a weight which determines the probabilities for
     that command to be run.
 
+    Use :func:`validate` to check if the input command set is well-formed.
+
     Parameters
     ----------
     commands : list of revl.Command or compatible tuple
