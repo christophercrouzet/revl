@@ -118,10 +118,11 @@ def _findBenchs(path, selectors=None):
                        for selector in selectors)
 
     out = []
+    loader = BenchLoader()
     if path == '__main__':
-        rootBench = BenchLoader().loadTestsFromModule(sys.modules[path])
+        rootBench = loader.loadTestsFromModule(sys.modules[path])
     else:
-        rootBench = BenchLoader().discover(path, pattern='bench*.py')
+        rootBench = loader.discover(path, pattern='bench*.py')
 
     stack = collections.deque((rootBench,))
     while stack:
