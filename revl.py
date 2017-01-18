@@ -22,7 +22,7 @@ import sys
 from maya import OpenMaya
 
 
-__version__ = '0.1.0'
+__version__ = '0.2.0'
 
 
 if sys.version_info[0] == 2:
