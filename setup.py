@@ -28,7 +28,7 @@ setuptools.setup(
     version=_findVersion('revl.py'),
     description="Helps to benchmark code for Autodesk Maya",
     long_description=_read('README.rst'),
-    keywords='Autodesk Maya API benchmark test',
+    keywords='Autodesk Maya API benchmark benchmarking test',
     license='MIT',
     url='https://github.com/christophercrouzet/revl',
     author="Christopher Crouzet",
@@ -37,11 +37,12 @@ setuptools.setup(
         'Development Status :: 4 - Beta',
         'Intended Audience :: Developers',
         'License :: OSI Approved :: MIT License',
+        'Operating System :: OS Independent',
         'Programming Language :: Python',
         'Programming Language :: Python :: 2',
         'Programming Language :: Python :: 2.7',
         'Topic :: Software Development :: Libraries :: Python Modules',
-        'Topic :: Utilities'
+        'Topic :: Utilities',
     ],
     extras_require={
         'dev': ['coverage', 'sphinx>=1.3'],
