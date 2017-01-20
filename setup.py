@@ -45,7 +45,8 @@ setuptools.setup(
         'Topic :: Utilities',
     ],
     extras_require={
-        'dev': ['coverage', 'sphinx>=1.3'],
+        'dev': ['coverage', 'pycodestyle', 'pydocstyle', 'pylint',
+                'sphinx>=1.3'],
         'docs': ['sphinx>=1.3'],
     },
     packages=[],

@@ -4,14 +4,10 @@
 #   |__| |_____|\___/ |__|
 #
 
-"""
-    revl
-    ~~~~
+"""Helps to benchmark code for Autodesk Maya.
 
-    Helps to benchmark code for Autodesk Maya.
-
-    :copyright: Copyright 2016-2017 by Christopher Crouzet.
-    :license: MIT, see LICENSE for details.
+:copyright: Copyright 2016-2017 by Christopher Crouzet.
+:license: MIT, see LICENSE for details.
 """
 
 import collections
@@ -48,7 +44,6 @@ NULL_OBJ = OpenMaya.MObject().kNullObj
 
 
 class Context(object):
-
     """Evaluation context.
 
     Each command function needs to define this context as first parameter.
@@ -93,7 +88,6 @@ _Command.__new__.__defaults__ = (None, None)
 
 
 class Command(_Command):
-
     """Weighted command.
 
     It is not necessary to use this class to define a command as it can be done
@@ -134,7 +128,6 @@ _Primitive = collections.namedtuple(
 
 
 class Primitive(_Primitive):
-
     """Primitive.
 
     An instance of this class is returned by the :func:`createPrimitive`
@@ -154,7 +147,6 @@ class Primitive(_Primitive):
 
 
 class PrimitiveType(object):
-
     """Enumerator for the primitive types.
 
     This is used as a parameter for the :func:`createPrimitive` function.
