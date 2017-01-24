@@ -19,6 +19,9 @@ from maya import OpenMaya
 
 
 __version__ = '0.2.0'
+__all__ = ['NULL_OBJ', 'Context', 'Command', 'Primitive', 'PrimitiveType',
+           'validate', 'run', 'pickTransform', 'createDagNode', 'createDgNode',
+           'createPrimitive', 'createTransform', 'unparent']
 
 
 if sys.version_info[0] == 2:
