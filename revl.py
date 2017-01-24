@@ -230,14 +230,14 @@ _PRIMITIVE_TRAITS = {
     PrimitiveType.NURBS_CIRCLE: _defineCurveTraits('makeNurbCircle'),
     PrimitiveType.NURBS_CONE: _defineSurfaceTraits('makeNurbCone'),
     PrimitiveType.NURBS_CUBE: _defineSurfaceTraits(
-        'makeNurbCube', outPlugs=['outputSurface%s' % (i if i > 0 else '',)
-                                  for i in _range(6)]),
+        'makeNurbCube', outPlugs=['outputSurface%s' % (_i if _i > 0 else '',)
+                                  for _i in _range(6)]),
     PrimitiveType.NURBS_CYLINDER: _defineSurfaceTraits('makeNurbCylinder'),
     PrimitiveType.NURBS_PLANE: _defineSurfaceTraits('makeNurbPlane'),
     PrimitiveType.NURBS_SPHERE: _defineSurfaceTraits('makeNurbSphere'),
     PrimitiveType.NURBS_SQUARE: _defineCurveTraits(
-        'makeNurbsSquare', outPlugs=['outputCurve%s' % (i,)
-                                     for i in _range(1, 5)]),
+        'makeNurbsSquare', outPlugs=['outputCurve%s' % (_i,)
+                                     for _i in _range(1, 5)]),
     PrimitiveType.NURBS_TORUS: _defineSurfaceTraits('makeNurbTorus'),
     PrimitiveType.POLY_CONE: _defineMeshTraits('polyCone'),
     PrimitiveType.POLY_CUBE: _defineMeshTraits('polyCube'),
