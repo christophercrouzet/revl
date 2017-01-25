@@ -1,19 +1,18 @@
 #!/usr/bin/env mayapy
 
-import maya.standalone
-maya.standalone.initialize()
-
 import os
 import sys
+import unittest
+
+import maya.standalone
+from maya import OpenMaya
+
 _HERE = os.path.abspath(os.path.dirname(__file__))
 sys.path.insert(0, os.path.abspath(os.path.join(_HERE, os.pardir)))
 
-
-import unittest
-
-from maya import OpenMaya
-
 import revl
+
+maya.standalone.initialize()
 
 
 globalA = 0
