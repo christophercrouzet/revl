@@ -4,11 +4,19 @@
 #   |__| |_____|\___/ |__|
 #
 
-"""Helps to benchmark code for Autodesk Maya.
+"""Helps to benchmark code for Autodesk Maya."""
 
-:copyright: Copyright 2016-2017 by Christopher Crouzet.
-:license: MIT, see LICENSE for details.
-"""
+__all__ = ['NULL_OBJ', 'Context', 'Command', 'Primitive', 'PrimitiveType',
+           'validate', 'run', 'pickTransform', 'createDagNode', 'createDgNode',
+           'createPrimitive', 'createTransform', 'unparent']
+
+__title__ = 'revl'
+__version__ = '0.2.0'
+__summary__ = "Helps to benchmark code for Autodesk Maya"
+__url__ = 'https://github.com/christophercrouzet/revl'
+__author__ = "Christopher Crouzet"
+__contact__ = 'christopher.crouzet@gmail.com'
+__license__ = "MIT"
 
 import collections
 import numbers
@@ -16,12 +24,6 @@ import random
 import sys
 
 from maya import OpenMaya
-
-
-__version__ = '0.2.0'
-__all__ = ['NULL_OBJ', 'Context', 'Command', 'Primitive', 'PrimitiveType',
-           'validate', 'run', 'pickTransform', 'createDagNode', 'createDgNode',
-           'createPrimitive', 'createTransform', 'unparent']
 
 
 if sys.version_info[0] == 2:

@@ -51,10 +51,11 @@ templates_path = ['_templates']
 source_suffix = '.rst'
 master_doc = 'index'
 
-project = u'revl'
-copyright = u"2016-%i, Christopher Crouzet" % (datetime.utcnow().year,)
-author = u"Christopher Crouzet"
+project = revl.__title__
 version = revl.__version__
+description = revl.__summary__
+author = revl.__author__
+copyright = "2016-%i, %s" % (datetime.utcnow().year, revl.__author__)
 release = version
 language = None
 
@@ -65,10 +66,6 @@ exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 pygments_style = 'sphinx'
 show_authors = False
 todo_include_todos = False
-
-description = (
-    "A Python library that helps to benchmark code for Autodesk Maya."
-)
 
 
 # -- Options for HTML output ----------------------------------------------
@@ -93,14 +90,14 @@ html_sidebars = {
         'links.html',
         'searchbox.html',
         'donate.html',
-    ]
+    ],
 }
 html_static_path = ['_static']
 
 
 # -- Options for HTMLHelp output ------------------------------------------
 
-htmlhelp_basename = 'revldoc'
+htmlhelp_basename = '%sdoc' % (project,)
 
 
 # -- Options for LaTeX output ---------------------------------------------
@@ -109,20 +106,21 @@ latex_elements = {
 }
 
 latex_documents = [
-    (master_doc, 'revl.tex', u"revl Documentation", author, 'manual'),
+    (master_doc, '%s.tex' % (project,), "%s Documentation" % (project,),
+     author, 'manual'),
 ]
 
 
 # -- Options for manual page output ---------------------------------------
 
 man_pages = [
-    (master_doc, 'revl', u"revl Documentation", [author], 1)
+    (master_doc, project, "%s Documentation" % (project,), [author], 1),
 ]
 
 
 # -- Options for Texinfo output -------------------------------------------
 
 texinfo_documents = [
-    (master_doc, 'revl', u"revl Documentation", author, 'revl', description,
-     'Miscellaneous'),
+    (master_doc, project, "%s Documentation" % (project,), author, project,
+     description, 'Miscellaneous'),
 ]
